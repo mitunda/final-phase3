@@ -38,7 +38,7 @@ def add_baby(baby_name, baby_weight, birth_date, sickness_details):
 if __name__ == '__main__':
     cli()
 
-#delete feature
+#delete feature(not complete)
 @cli.command()
 @click.option('--baby_id', type=int, required=True, help='ID of the baby to delete')
 def delete_baby(baby_id):
