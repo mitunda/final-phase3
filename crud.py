@@ -10,21 +10,17 @@ def create_baby(db: Session, baby_name: str, baby_weight: float, birth_date: str
     db.refresh(db_baby)
     return db_baby
 
-# Delete a baby record by ID
-def delete_baby(db: Session, baby_id: int):
-    db_baby = db.query(Baby).filter(Baby.baby_id == baby_id).first()
-    if db_baby:
-        db.delete(db_baby)
-        db.commit()
-        return True
-    return False
-
-# Get all baby records
-def get_baby_records(db: Session):
+# Get all babies
+def get_all_babies(db: Session):
     return db.query(Baby).all()
 
-# Get a specific baby record by ID
-def get_baby_record_by_id(db: Session, baby_id: int):
-    return db.query(Baby).filter(Baby.baby_id == baby_id).first()
-
-
+# Delete a baby by ID
+def delete_baby(db: Session, baby_id: int):
+    baby = db.query(Baby).filter(Baby.baby_id == baby_id).first()
+    
+    if baby:
+        db.delete(baby)
+        db.commit()
+        return True
+    else:
+        return False
